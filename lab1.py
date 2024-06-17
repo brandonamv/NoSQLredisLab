@@ -32,8 +32,10 @@ for c in consult:
 
 #consultas ordenadas
 print("2) Primeras 10 palabras ordenadas por frecuencia:\n")
-for c in r.zrange("OrderSet",0,10,desc=True):
-    print(c.decode())
+rank=1
+for c in r.zrange("OrderSet",0,9,desc=True):
+    print(str(rank)+". '"+c.decode()+"'")
+    rank+=1
 
 #consultas por rango
 print("3)1. Palabras con 100 ocurrencias exactas:\n")
