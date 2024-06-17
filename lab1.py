@@ -25,25 +25,25 @@ file1.close()
 
 #Consultas simples
 consult=["ARIEL", "Bastard", "extra-ordinary","Caesar's", "Menelaus", "Achilles!", "Warwick", "WORKS--WILLIAM", "destroy'd?", "epitaph!"]
-print("\n1) Numeros de frecunecia:\n")
+print("\n1) Numeros de frecunecia:")
 for c in consult:
     data=r.get(c)
     print(c+': '+data.decode())
 
 #consultas ordenadas
-print("2) Primeras 10 palabras ordenadas por frecuencia:\n")
+print("\n2) Primeras 10 palabras ordenadas por frecuencia:")
 rank=1
 for c in r.zrange("OrderSet",0,9,desc=True):
     print(str(rank)+". '"+c.decode()+"'")
     rank+=1
 
 #consultas por rango
-print("3)1. Palabras con 100 ocurrencias exactas:\n")
+print("\n3)1. Palabras con 100 ocurrencias exactas:")
 for c in r.zrangebyscore("OrderSet",100,100):
-    print(c.decode())
-print("3)2. Palabras con mas de 1000 ocurrencias:\n")
+    print("'"+c.decode()+"'")
+print("\n3)2. Palabras con mas de 1000 ocurrencias:")
 for c in r.zrangebyscore("OrderSet",1000,float('inf')):
-    print(c.decode())
-print("3)2. Palabras con entre 320 y 330 ocurrencias:\n")
+    print("'"+c.decode()+"'")
+print("\n3)2. Palabras con entre 320 y 330 ocurrencias:")
 for c in r.zrangebyscore("OrderSet",320,330):
-    print(c.decode())
+    print("'"+c.decode()+"'")
